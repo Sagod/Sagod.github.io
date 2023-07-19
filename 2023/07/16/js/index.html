@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="JS, Hexo">
+    <meta name="description" content="一.原型对象，原型链当js引擎解析到A构造函数的时候，都会为A构造函数添prototype属性，可以通过A.prototype访问，这个prototype属性指向一个对象，这个对象就是这个A构造函数的原型，也叫原型对象。这个原型对象也有一个">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Hexo</title>
+    <title>JS | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">JS</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-15
+                    2023-07-16
                 </div>
                 
 
@@ -466,19 +466,70 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>这是pis的blog22</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <h4 id="一-原型对象，原型链"><a href="#一-原型对象，原型链" class="headerlink" title="一.原型对象，原型链"></a>一.原型对象，原型链</h4><p>当js引擎解析到A构造函数的时候，都会为A构造函数添prototype属性，可以通过A.prototype访问，这个prototype属性指向一个对象，这个对象就是这个A构造函数的原型，也叫原型对象。这个原型对象也有一个自带的属性 构造器constructor，constructor指向这个A构造函数。当对这个构造函数实例化的时候，生成的这个对象，叫做实例化对象B。这个实例化对象有一个隐式的prototype属性，可以通过B.__proto__访问，这个隐式的prototype属性也指向了这个构造函数的原型对象。这个构造函数的原型对象实际上是Object的构造函数的实例化对象，这个实例化对象也有隐式的prototype属性，也是通过__proto__访问，指向Object的原型对象。当访问对象B上的某个不存在属性时，会向B的原型对象上查找，当B的原型对象上也没有这个属性时，会继续向Object的原型对象上查找，依旧找不到时返回null，这个null是最终的结果，指向内存中的某个地址。如果访问的是B的某个方法，原型链上都没有时，则直接抛出异常。<br><img src="http://www.salegeshen.top/imagesformd/prototype.jpg" alt="原型链"></p>
+<h4 id="2-promise"><a href="#2-promise" class="headerlink" title="2.promise"></a>2.promise</h4><p>promise有三种状态，pending初始状态，也叫等待状态。fulfiled成功状态，rejected失败状态，状态一旦改变就不会再改变。创建promise的时候，是立即执行的，只有它的回调才是异步的。<br>promise设计过程中，主要使用了观察者模式。<br>通过Promise.prototype.then和Promise.prototype.catch方法将观察者方法注册到被观察者Promise对象中，同时返回一个新的Promise对象，以便可以链式调用。<br>特点：</p>
+<ol>
+<li>promise的状态不受外部影响，只有异步操作的结果才能决定它的状态，其他操作都无法改变。</li>
+<li>promise的状态一旦改变，就已经确定，状态不可逆。</li>
+<li>创建promise是同步的，一旦创建就无法取消。</li>
+<li>promise如果没有回调，那么它的内部状态是无法反应到外部的。</li>
+<li>promise可以解决异步的问题，但是不能说promise是异步的。</li>
+</ol>
+<p>promise有3个方法resole(),reject(),all()，promise的原型上有5个方法.then(),.catch(),.all(),.race(), finally()</p>
+<ul>
+<li>.then()  Promise.prototype.then(onResolved, onRejected)=&gt; {}拿到成功onResolved的回调，和失败onRejected的回调</li>
+<li>.catch()    Promise.prototype.catch (onRejected) =&gt; {}只是失败的调用。then()的语法糖，相当于: then(undefined, onRejected)</li>
+<li>.all()    Promise.all(promises)=&gt; {}    promises: 包含n个promise的数组返回一个新的promise,只有所有的promise都成功才成功,只要有一个失败了就直接失败。失败了返回那个失败值。</li>
+<li>.race()    Promise.race(promises)=&gt; {}    promises: 包含n个promise的数组返回一个新的promise,第一个完成的promise的结果状态就是最终的结果状态。</li>
+</ul>
+<h4 id="3-async-awit"><a href="#3-async-awit" class="headerlink" title="3.async awit"></a>3.async awit</h4><p>async是Generator和promise的语法糖，简单的理解就是 async相当于generator的*，await相当于yield。<br>awit只能在async之中使用，要想捕获async的异常，得用try catch。用async修饰函数，则该函数返回一个promise对象。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51066068/article/details/124740331">简单理解generator</a> </p>
+<h4 id="4-js对象拷贝"><a href="#4-js对象拷贝" class="headerlink" title="4.js对象拷贝"></a>4.js对象拷贝</h4><h6 id="一-浅拷贝"><a href="#一-浅拷贝" class="headerlink" title="一.浅拷贝"></a>一.浅拷贝</h6><ol>
+<li><p>object.assign()</p>
+<pre class="line-numbers language-none"><code class="language-none">它不会拷贝对象的继承属性；
+它不会拷贝对象的不可枚举的属性；
+可以拷贝 Symbol 类型的属性。
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+const target &#x3D; &#123;&#125;;
+const source &#x3D; &#123; a: &#123; b: 1 &#125; &#125;;
+Object.assign(target, source);
+console.log(target); &#x2F;&#x2F; &#123; a: &#123; b: 1 &#125; &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>扩展运算符方式(…)<br>与object.assign()类似</p>
+<pre class="line-numbers language-none"><code class="language-none">const obj &#x3D; &#123;
+  a: 1,
+  b: &#123;
+    c: 1
+  &#125;
+&#125;
+const obj2 &#x3D; &#123;
+  ...obj
+&#125;
+obj.a &#x3D; 2
+console.log(obj)    &#x2F;&#x2F;&#123;a:2,b:&#123;c:1&#125;&#125; 
+console.log(obj2);  &#x2F;&#x2F;&#123;a:1,b:&#123;c:1&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>直接赋值引用</p>
+<pre class="line-numbers language-none"><code class="language-none">let obj &#x3D; &#123;
+    age:10
+&#125;
+let target &#x3D; obj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="二-深拷贝"><a href="#二-深拷贝" class="headerlink" title="二.深拷贝"></a>二.深拷贝</h5></li>
+<li><p>json序列化</p>
+<pre class="line-numbers language-none"><code class="language-none">const obj1 &#x3D; &#123; a: 1, b: [1, 2, 3] &#125;
+const target &#x3D; JSON.parse(JSON.stringify(obj1));
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+弊端：
+1. 拷贝的对象的值中如果有函数、undefined、symbol 这几种类型
+经过 JSON.stringify 序列化之后的字符串中这个键值对会消失；
+2. 拷贝 Date 引用类型会变成字符串；
+3. 无法拷贝不可枚举的属性；
+4. 无法拷贝对象的原型链；
+5. 拷贝 RegExp 引用类型会变成空对象；
+6. 对象中含有 NaN、Infinity 以及 -Infinity，JSON 序列化的结果会变成 null；
+7. 无法拷贝对象的循环应用，即对象成环 (obj[key] &#x3D; obj)。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>递归遍历</p>
+</li>
+<li><p>三方库 lodash</p>
+</li>
+</ol>
 
                 
             </div>
@@ -505,7 +556,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/01/15/hello-world/">http://example.com/2022/01/15/hello-world/</a>
+                    <a href="http://example.com/2023/07/16/js/">http://example.com/2023/07/16/js/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -714,54 +765,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/17/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+                <a href="/2023/07/16/js/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Markdown基本语法">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="JS">
                         
-                        <span class="card-title">Markdown基本语法</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            方学东
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/01/15/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">JS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -772,7 +787,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-16
                             </span>
                         <span class="publish-author">
                             
@@ -783,6 +798,43 @@
                     </div>
                 </div>
 
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/07/16/CSS/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CSS">
+                        
+                        <span class="card-title">CSS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            方学东
+                            
+                        </span>
+                    </div>
+                </div>
                 
             </div>
         </div>

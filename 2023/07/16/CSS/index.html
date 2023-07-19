@@ -4,8 +4,37 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="CSS, Hexo">
+    <meta name="description" content="一、css1.css权重
+
+
+选择器
+权重
+权重的等级
+
+
+
+！important
+无穷大
+0
+
+
+style 属性
+1,0,0,0
+1
+
+
+id 选择器
+0,1,0,0
+2
+
+
+类、伪类、属性选择器
+0,0,1,0
+3
+
+
+标签、伪元素选">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +46,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Hexo</title>
+    <title>CSS | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +338,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">CSS</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +471,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-15
+                    2023-07-16
                 </div>
                 
 
@@ -466,19 +495,90 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>这是pis的blog22</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <h2 id="一、css"><a href="#一、css" class="headerlink" title="一、css"></a>一、css</h2><h5 id="1-css权重"><a href="#1-css权重" class="headerlink" title="1.css权重"></a>1.css权重</h5><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>权重</th>
+<th>权重的等级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>！important</td>
+<td>无穷大</td>
+<td>0</td>
+</tr>
+<tr>
+<td>style 属性</td>
+<td>1,0,0,0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>id 选择器</td>
+<td>0,1,0,0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>类、伪类、属性选择器</td>
+<td>0,0,1,0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>标签、伪元素选择器、&gt; ~ +</td>
+<td>0,0,0,1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>通配符选择器</td>
+<td>0,0,0,0</td>
+<td>5</td>
+</tr>
+<tr>
+<td>继承的样式</td>
+<td>没有权重</td>
+<td>6</td>
+</tr>
+<tr>
+<td>计算：<strong>所有匹配到的选择器相加，没有进位，权重大的样式生效。</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="2-在书写高效CSS时有哪些问题需要考虑"><a href="#2-在书写高效CSS时有哪些问题需要考虑" class="headerlink" title="2.在书写高效CSS时有哪些问题需要考虑"></a>2.在书写高效CSS时有哪些问题需要考虑</h4><p>1.样式，从右向左解析一个选择器<br>2.选择器的速度，id最快，通配符（*）最慢，常用的4种选择器由快到慢依次是id&gt;class&gt;tag&gt;*<br>3.不要用标签限制id的选择器，如div#nav{}，id选择器已经是唯一，没必要用div限制，这样会让选择器变慢<br>4.后代选择器最慢，如 body div p a{} 这样的效率极低<br>5.想好布局再去书写<br>6.css3的选择器（如nth-child）用起来方便，但是会浪费很多浏览器资源<br>7.id选择器速度很快，但是通篇都用id选择器，会让代码阅读难度变大，不方便阅读和维护，项目大的时候 最好别这么干。</p>
+<h4 id="3-flex-1是什么意思？"><a href="#3-flex-1是什么意思？" class="headerlink" title="3.flex:1是什么意思？"></a>3.flex:1是什么意思？</h4><p>flex: 1 实际上是三个属性的缩写：flex-grow: 1; flex-shrink: 1 flex-basis: auto;<br>flex-grow:当前元素所占的份额</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div class&#x3D;&quot;warp&quot; style&#x3D;‘width:600px’&gt;
+  &lt;div class&#x3D;&quot;box1&quot;&gt;flex-grow：1&lt;&#x2F;div&gt;
+  &lt;div class&#x3D;&quot;box2&quot;&gt;flex-grow：2&lt;&#x2F;div&gt;
+  &lt;div class&#x3D;&quot;box3&quot;&gt;flex-grow：3&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>box1的宽度是100px；box2的宽度是200px；box3的宽度是300px</p>
+<p>flex-basis:当前元素所占的份额</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div class&#x3D;&quot;warp&quot; style&#x3D;‘width:600px’&gt;
+  &lt;div class&#x3D;&quot;box1&quot;&gt;flex-basis：10%&lt;&#x2F;div&gt;
+  &lt;div class&#x3D;&quot;box2&quot;&gt;flex-basis：20%&lt;&#x2F;div&gt;
+  &lt;div class&#x3D;&quot;box3&quot;&gt;flex-basis：300px&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>box1的宽度是60px；box2的宽度是120px；box3的宽度是300px<br>flex-basis与flex-grow的区别是flex-grow会占满整个容器<br>flex-shrink当前元素是否缩小默认1 不缩小</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div class&#x3D;&quot;warp&quot; style&#x3D;‘width:600px’&gt;
+  &lt;div class&#x3D;&quot;box1&quot;&gt;width:300px&lt;&#x2F;div&gt;
+  &lt;div class&#x3D;&quot;box2&quot;&gt;flex-shrink:1;width:300px&lt;&#x2F;div&gt;
+  &lt;div class&#x3D;&quot;box3&quot;&gt;flex-shrink:2;width:300px&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果子元素的总宽度超过父元素，则进行缩小，反之则不缩小<br>子元素总宽度 300+300+300*2 = 1200<br>超出宽度 1200 - 600 = 600<br>box1宽度225px<br>box2宽度的收缩宽度:超出的宽度* flex-shrink * 自身的宽度 / 总宽度 即：300* 1 * 300/1200 = 75<br>所以box2的宽度为 300 - 75 = 225px<br>box3的宽度为300 - 300* 1 * 300/1200  = 150</p>
+<h4 id="4-画一条0-5px的线"><a href="#4-画一条0-5px的线" class="headerlink" title="4.画一条0.5px的线"></a>4.画一条0.5px的线</h4><pre class="line-numbers language-none"><code class="language-none">1.transform: scale(0.5)
+2.box-shadow: 0px 0px 0px 0.5px green;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+
+
+
+
+
+
+
 
                 
             </div>
@@ -505,7 +605,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/01/15/hello-world/">http://example.com/2022/01/15/hello-world/</a>
+                    <a href="http://example.com/2023/07/16/CSS/">http://example.com/2023/07/16/CSS/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -718,13 +818,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/01/17/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+                <a href="/2023/07/16/js/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Markdown基本语法">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="JS">
                         
-                        <span class="card-title">Markdown基本语法</span>
+                        <span class="card-title">JS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -735,7 +835,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-16
                         </span>
                         <span class="publish-author">
                             
@@ -752,16 +852,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/15/hello-world/">
+                <a href="/2022/01/17/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Markdown基本语法">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Markdown基本语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -772,7 +872,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
                             </span>
                         <span class="publish-author">
                             
@@ -782,7 +882,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
